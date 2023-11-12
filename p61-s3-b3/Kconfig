@@ -1,4 +1,4 @@
-if BOARD_GIGABYTE_TECHNOLOGY_CO.__LTD_P61_S3_B3
+if BOARD_GIGABYTE_GA_P61_S3_B3
 
 config BOARD_SPECIFIC_OPTIONS
 	def_bool y
@@ -13,11 +13,11 @@ config BOARD_SPECIFIC_OPTIONS
 
 config MAINBOARD_DIR
 	string
-	default "gigabyte_technology_co.__ltd/p61_s3_b3"
+	default "gigabyte/ga-p61-s3-b3"
 
 config MAINBOARD_PART_NUMBER
 	string
-	default "P61-S3-B3"
+	default "GA-P61-S3-B3"
 
 config DRAM_RESET_GATE_GPIO # FIXME: check this
 	int

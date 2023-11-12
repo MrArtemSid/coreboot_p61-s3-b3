@@ -1,0 +1,2 @@
+config BOARD_GIGABYTE_GA_P61_S3_B3
+	bool "GA-P61-S3-B3"
