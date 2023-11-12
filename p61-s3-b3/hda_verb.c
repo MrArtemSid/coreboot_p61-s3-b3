@@ -3,6 +3,21 @@
 #include <device/azalia_device.h>
 
 const u32 cim_verb_data[] = {
+	0x11060397,	/* Codec Vendor / Device ID: VIA VT1708S */
+	0x1458a000,	/* Subsystem ID */
+	12,
+	AZALIA_SUBVENDOR(0, 0x1458a000),
+	AZALIA_PIN_CFG(0, 0x19, 0x410110f0),
+	AZALIA_PIN_CFG(0, 0x1a, 0x01a19036),
+	AZALIA_PIN_CFG(0, 0x1b, 0x0181303e),
+	AZALIA_PIN_CFG(0, 0x1c, 0x01014010),
+	AZALIA_PIN_CFG(0, 0x1d, 0x0221401f),
+	AZALIA_PIN_CFG(0, 0x1e, 0x02a19037),
+	AZALIA_PIN_CFG(0, 0x1f, 0x503701f0),
+	AZALIA_PIN_CFG(0, 0x20, 0x474511f0),
+	AZALIA_PIN_CFG(0, 0x21, 0x074511f0),
+	AZALIA_PIN_CFG(0, 0x22, 0x410160f0),
+	AZALIA_PIN_CFG(0, 0x23, 0x410120f0),
 };
 
 const u32 pc_beep_verbs[0] = {};
