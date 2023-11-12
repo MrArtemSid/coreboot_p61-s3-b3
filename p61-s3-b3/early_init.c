@@ -5,6 +5,11 @@
 #include <device/pci_ops.h>
 #include <northbridge/intel/sandybridge/raminit_native.h>
 #include <southbridge/intel/bd82x6x/pch.h>
+#include <superio/ite/common/ite.h>
+#include <superio/ite/it8728f/it8728f.h>
+
+#define SUPERIO_GPIO PNP_DEV(0x2e, IT8728F_GPIO)
+#define SERIAL_DEV PNP_DEV(0x2e, 0x01)
 
 const struct southbridge_usb_port mainboard_usb_ports[] = {
 	{ 1, 1, 0 },
@@ -25,8 +30,13 @@ const struct southbridge_usb_port mainboard_usb_ports[] = {
 
 void bootblock_mainboard_early_init(void)
 {
-	pci_write_config16(PCI_DEV(0, 0x1f, 0), 0x82, 0x3409);
-	pci_write_config16(PCI_DEV(0, 0x1f, 0), 0x80, 0x0000);
+	if (!CONFIG(NO_UART_ON_SUPERIO)) {
+		/* Enable serial port */
+		ite_enable_serial(SERIAL_DEV, CONFIG_TTYS0_BASE);
+	}
+
+	/* Disable SIO WDT which kicks in DualBIOS */
+	ite_reg_write(SUPERIO_GPIO, 0xEF, 0x7E);
 }
 
 /* FIXME: Put proper SPD map here. */
