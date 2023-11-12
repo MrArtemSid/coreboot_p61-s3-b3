@@ -1,5 +1,6 @@
 chip northbridge/intel/sandybridge
 	device domain 0x0 on
+		subsystemid 0x1458 0x5001 inherit
 		chip southbridge/intel/bd82x6x # Intel Series 6 Cougar Point PCH
 			register "docking_supported" = "0"
 			register "gen1_dec" = "0x000c0801"
@@ -15,68 +16,51 @@ chip northbridge/intel/sandybridge
 			device ref mei1 on # Management Engine Interface 1
 				subsystemid 0x1458 0x1c3a
 			end
-			device ref mei2 off # Management Engine Interface 2
-			end
-			device ref me_ide_r off # Management Engine IDE-R
-			end
-			device ref me_kt off # Management Engine KT
-			end
-			device ref gbe off # Intel Gigabit Ethernet
-			end
+			device ref mei2 off end # Management Engine Interface 2
+			device ref me_ide_r off end # Management Engine IDE-R
+			device ref me_kt off end # Management Engine KT
+			device ref gbe off end # Intel Gigabit Ethernet
 			device ref ehci2 on # USB2 EHCI #2
 				subsystemid 0x1458 0x5006
 			end
 			device ref hda on # High Definition Audio
 				subsystemid 0x1458 0xa000
 			end
-			device ref pcie_rp1 on # PCIe Port #1
-				subsystemid 0x1458 0x5001
-			end
-			device ref pcie_rp2 off # PCIe Port #2
-			end
-			device ref pcie_rp3 off # PCIe Port #3
-			end
-			device ref pcie_rp4 on # PCIe Port #4
-				subsystemid 0x1458 0x5001
-			end
-			device ref pcie_rp5 off # PCIe Port #5
-			end
-			device ref pcie_rp6 on # PCIe Port #6
-				subsystemid 0x1458 0x5001
-			end
-			device ref pcie_rp7 off # PCIe Port #7
-			end
-			device ref pcie_rp8 off # PCIe Port #8
-			end
+			device ref pcie_rp1 on end # PCIe Port #1
+			device ref pcie_rp2 off end # PCIe Port #2
+			device ref pcie_rp3 off end # PCIe Port #3
+			device ref pcie_rp4 on end # PCIe Port #4
+			device ref pcie_rp5 off end # PCIe Port #5
+			device ref pcie_rp6 on end # PCIe Port #6
+			device ref pcie_rp7 off end # PCIe Port #7
+			device ref pcie_rp8 off end # PCIe Port #8
 			device ref ehci1 on # USB2 EHCI #1
 				subsystemid 0x1458 0x5006
 			end
-			device ref pci_bridge off # PCI bridge
-			end
+			device ref pci_bridge off end # PCI bridge
 			device ref lpc on # LPC bridge
-				subsystemid 0x1458 0x5001
 				chip superio/ite/it8728f # FIXME: Recheck everything, especially GPIO
-					device pnp 2e.0 off end		# Floppy
-					device pnp 2e.1 on		# COM1
+					device pnp 2e.0 off end # Floppy
+					device pnp 2e.1 on # COM1
 						io  0x60 = 0x03f8
 						irq 0x70 = 4
 					end
-					device pnp 2e.2 off end		# COM2
-					device pnp 2e.3 off end		# Parallel port
-					device pnp 2e.4 on		# Environment Controller
+					device pnp 2e.2 off end # COM2
+					device pnp 2e.3 off end # Parallel port
+					device pnp 2e.4 on # Environment Controller
 						io  0x60 = 0x0290
 						irq 0x70 = 9
 						# io  0x62 = 0x0230
 					end
-					device pnp 2e.5 on		# Keyboard
+					device pnp 2e.5 on # Keyboard
 						io  0x60 = 0x60
 						irq 0x70 = 1
 						io  0x62 = 0x64
 					end
-					device pnp 2e.6 on		# Mouse
+					device pnp 2e.6 on # Mouse
 						irq 0x70 = 12
 					end
-					device pnp 2e.7 on		# GPIO
+					device pnp 2e.7 on # GPIO
 						irq 0x25 = 0x40
 						irq 0x27 = 0x10
 						irq 0x2c = 0x80
@@ -87,27 +71,22 @@ chip northbridge/intel/sandybridge
 						irq 0xcb = 0x00
 						irq 0xf1 = 0x40
 					end
-					device pnp 2e.a off end		# CIR
+					device pnp 2e.a off end # CIR
 				end
 			end
 			device ref sata1 on # SATA Controller 1
 				subsystemid 0x1458 0xb002
 			end
-			device ref smbus on # SMBus
-				subsystemid 0x1458 0x5001
-			end
+			device ref smbus on end # SMBus
 			device ref sata2 on # SATA Controller 2 Unsupported PCI device 8086:1c08
 				subsystemid 0x1458 0xb002
 			end
-			device ref thermal off # Thermal
-			end
+			device ref thermal off end # Thermal
 		end
-		device ref host_bridge on # Host bridge Host bridge
-		end
+		device ref host_bridge on end # Host bridge Host bridge
 		device ref peg10 on # PEG
 			subsystemid 0x1458 0x5000
 		end
-		device ref igd off # iGPU
-		end
+		device ref igd off end # iGPU
 	end
 end
