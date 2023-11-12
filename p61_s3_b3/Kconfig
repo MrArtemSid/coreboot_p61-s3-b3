@@ -1,0 +1,29 @@
+if BOARD_GIGABYTE_TECHNOLOGY_CO.__LTD_P61_S3_B3
+
+config BOARD_SPECIFIC_OPTIONS
+	def_bool y
+	select BOARD_ROMSIZE_KB_4096
+	select HAVE_ACPI_RESUME
+	select HAVE_ACPI_TABLES
+	select INTEL_INT15
+	select NORTHBRIDGE_INTEL_SANDYBRIDGE
+	select SERIRQ_CONTINUOUS_MODE
+	select SOUTHBRIDGE_INTEL_BD82X6X
+	select USE_NATIVE_RAMINIT
+
+config MAINBOARD_DIR
+	string
+	default "gigabyte_technology_co.__ltd/p61_s3_b3"
+
+config MAINBOARD_PART_NUMBER
+	string
+	default "P61-S3-B3"
+
+config DRAM_RESET_GATE_GPIO # FIXME: check this
+	int
+	default 60
+
+config USBDEBUG_HCD_INDEX # FIXME: check this
+	int
+	default 2
+endif
