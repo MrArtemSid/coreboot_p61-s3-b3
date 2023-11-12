@@ -67,6 +67,40 @@ chip northbridge/intel/sandybridge # FIXME: GPU registers may not always apply.
 			end
 			device ref lpc on # LPC bridge
 				subsystemid 0x1458 0x5001
+				chip superio/ite/it8728f # FIXME: Recheck everything, especially GPIO
+					device pnp 2e.0 off end		# Floppy
+					device pnp 2e.1 on		# COM1
+						io  0x60 = 0x03f8
+						irq 0x70 = 4
+					end
+					device pnp 2e.2 off end		# COM2
+					device pnp 2e.3 off end		# Parallel port
+					device pnp 2e.4 on		# Environment Controller
+						io  0x60 = 0x0290
+						irq 0x70 = 9
+						# io  0x62 = 0x0230
+					end
+					device pnp 2e.5 on		# Keyboard
+						io  0x60 = 0x60
+						irq 0x70 = 1
+						io  0x62 = 0x64
+					end
+					device pnp 2e.6 on		# Mouse
+						irq 0x70 = 12
+					end
+					device pnp 2e.7 on		# GPIO
+						irq 0x25 = 0x40
+						irq 0x27 = 0x10
+						irq 0x2c = 0x80
+						io  0x60 = 0x0000
+						io  0x62 = 0x0a00
+						io  0x64 = 0x0000
+						irq 0x70 = 0x00
+						irq 0xcb = 0x00
+						irq 0xf1 = 0x40
+					end
+					device pnp 2e.a off end		# CIR
+				end
 			end
 			device ref sata1 on # SATA Controller 1
 				subsystemid 0x1458 0xb002
